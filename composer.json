@@ -1,0 +1,12 @@
+{
+  "name": "roundpartner/yii-angular2-dashboard",
+  "description": "Dashboard widgets",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Tom Lorentsen",
+      "email": "tom@roundpartner.co.uk"
+    }
+  ]
+}
