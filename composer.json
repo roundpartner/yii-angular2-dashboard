@@ -8,5 +8,10 @@
       "name": "Tom Lorentsen",
       "email": "tom@roundpartner.co.uk"
     }
-  ]
+  ],
+  "require-dev": {
+    "yiisoft/yii": "1.1.15",
+    "squizlabs/php_codesniffer": "2.*",
+    "phpunit/phpunit": "^4.8"
+  }
 }
