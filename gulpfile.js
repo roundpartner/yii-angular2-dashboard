@@ -1,3 +1,39 @@
 var gulp = require('gulp');
+const del = require('del');
+const typescript = require('gulp-typescript');
+const tscConfig = require('./tsconfig.json');
 
-gulp.task('default', []);
+// clean the contents of the distribution directory
+gulp.task('clean', function () {
+    return del('dist/**/*');
+});
+
+// TypeScript compile
+gulp.task('compile', ['clean'], function () {
+    return gulp
+        .src('src/**/*.ts')
+        .pipe(typescript(tscConfig.compilerOptions))
+        .pipe(gulp.dest('dist'));
+});
+
+gulp.task('copy:libs', ['clean'], function() {
+    return gulp.src([
+            'node_modules/es6-shim/es6-shim.min.js',
+            'node_modules/systemjs/dist/system-polyfills.js',
+            'node_modules/angular2/es6/dev/src/testing/shims_for_IE.js',
+            'node_modules/angular2/bundles/angular2-polyfills.js',
+            'node_modules/systemjs/dist/system.src.js',
+            'node_modules/rxjs/bundles/Rx.js',
+            'node_modules/angular2/bundles/angular2.dev.js',
+            'node_modules/angular2/bundles/router.dev.js'
+        ])
+        .pipe(gulp.dest('dist/lib'))
+});
+
+gulp.task('copy:assets', ['clean'], function() {
+    return gulp.src(['src/app/**/*', 'src/index.html', 'src/styles.css', '!src/app/**/*.ts'], { base : './src' })
+        .pipe(gulp.dest('dist'))
+});
+
+gulp.task('build', ['compile', 'copy:libs', 'copy:assets']);
+gulp.task('default', ['build']);
