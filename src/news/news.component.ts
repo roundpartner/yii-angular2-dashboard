@@ -10,7 +10,7 @@ import {News}           from './news';
     <div *ngFor="#item of news" class="row-fluid">
         <a class="span12 btn" href="{{ item.href }}">
         {{ item.title }}
-        <span class="label label-info right">{{ item.date }}</span>
+        <span *ngIf="item.date" class="label label-info right">{{ item.date }}</span>
       </a>
     </div>`,
     providers: [
