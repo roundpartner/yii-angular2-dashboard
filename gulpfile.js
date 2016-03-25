@@ -38,7 +38,7 @@ gulp.task('copy:json', ['clean'], function() {
 });
 
 gulp.task('copy:assets', ['clean'], function() {
-    return gulp.src(['src/news/**/*', 'src/index.html', 'src/styles.css', '!src/news/**/*.ts'], { base : './src' })
+    return gulp.src(['src/index.html', 'src/styles.css', '!src/*/**/*.ts'], { base : './src' })
         .pipe(gulp.dest('dist'))
 });
 

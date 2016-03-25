@@ -1,37 +1,37 @@
 import {Component, Injectable, OnInit} from 'angular2/core';
 import {HTTP_PROVIDERS}    from 'angular2/http';
-import {NewsService} from './news.service';
-import {News}           from './news';
+import {LinkService} from './link.service';
+import {Link}           from './link';
 
 @Component({
-    selector: 'widget-news',
+    selector: 'widget-quick-links',
     template: `
-    <div *ngFor="#item of news" class="row-fluid">
+    <div *ngFor="#item of links" class="row-fluid">
         <a class="span12 btn" href="{{ item.href }}">
         {{ item.title }}
         <span *ngIf="item.date" class="label label-info right">{{ item.date }}</span>
       </a>
-    </div>`,
+    </div>
+    `,
     providers: [
         HTTP_PROVIDERS,
-        NewsService,
+        LinkService,
     ]
 })
 
 @Injectable()
-export class NewsComponent implements OnInit {
-    constructor (private _newsService: NewsService) {}
-
+export class WidgetQuickLinksComponent  implements OnInit {
+    constructor (private _linkService: LinkService) {}
+    
     errorMessage: string;
-    news: News[];
+    links: Link[];
+    
+    ngOnInit() { this.getLinks(); }
 
-    ngOnInit() { this.getNews(); }
-
-    getNews() {
-        this._newsService.getNews()
+    getLinks() {
+        this._linkService.getLinks()
             .subscribe(
-                news => this.news = news,
+                links => this.links = links,
                 error =>  this.errorMessage = <any>error);
     }
-
 }

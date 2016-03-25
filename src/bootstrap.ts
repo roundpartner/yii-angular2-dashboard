@@ -3,8 +3,14 @@ System.config({
         news: {
             format: 'register',
             defaultExtension: 'js'
+        },
+        widgetquicklinks: {
+            format: 'register',
+            defaultExtension: 'js'
         }
     }
 });
 System.import('./news/main')
+    .then(null, console.error.bind(console));
+System.import('./widgetquicklinks/main')
     .then(null, console.error.bind(console));
