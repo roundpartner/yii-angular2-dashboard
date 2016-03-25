@@ -6,7 +6,7 @@ import {News}           from './news';
 
 @Component({
     selector: 'widget-news',
-    template: `hello world
+    template: `
     <div *ngFor="#item of news" class="row-fluid">
         <a class="span12 btn" href="{{ item.href }}">
         {{ item.title }}
