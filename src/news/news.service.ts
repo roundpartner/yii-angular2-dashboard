@@ -8,7 +8,7 @@ import {Observable}     from 'rxjs/Observable';
 export class NewsService {
     constructor (private http: Http) {}
 
-    private _newsUrl = 'widget/news.json';
+    private _newsUrl = 'news/news.json';
 
     getNews () {
         return this.http.get(this._newsUrl)

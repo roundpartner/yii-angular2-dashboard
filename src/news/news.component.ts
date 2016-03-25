@@ -7,11 +7,12 @@ import {News}           from './news';
 @Component({
     selector: 'my-widget',
     template: `hello world
-    <ul>
-    <li *ngFor="#newsItem of news">
-      {{ newsItem.title }}
-    </li>
-  </ul>`,
+    <div *ngFor="#item of news" class="row-fluid">
+        <a class="span12 btn" href="{{ item.href }}">
+        {{ item.title }}
+        <span class="label label-info right">{{ item.date }}</span>
+      </a>
+    </div>`,
     providers: [
         HTTP_PROVIDERS,
         NewsService,
@@ -19,7 +20,7 @@ import {News}           from './news';
 })
 
 @Injectable()
-export class AppComponent implements OnInit {
+export class NewsComponent implements OnInit {
     constructor (private _newsService: NewsService) {}
 
     errorMessage: string;

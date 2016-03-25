@@ -1,10 +1,10 @@
 System.config({
     packages: {
-        widget: {
+        news: {
             format: 'register',
             defaultExtension: 'js'
         }
     }
 });
-System.import('./widget/main')
+System.import('./news/main')
     .then(null, console.error.bind(console));
