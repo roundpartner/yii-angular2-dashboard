@@ -24,14 +24,16 @@ gulp.task('copy:libs', ['clean'], function() {
             'node_modules/angular2/bundles/angular2-polyfills.js',
             'node_modules/systemjs/dist/system.src.js',
             'node_modules/rxjs/bundles/Rx.js',
+            'node_modules/rxjs/operator/map.js',
             'node_modules/angular2/bundles/angular2.dev.js',
+            'node_modules/angular2/bundles/http.dev.js',
             'node_modules/angular2/bundles/router.dev.js'
         ])
         .pipe(gulp.dest('dist/lib'))
 });
 
 gulp.task('copy:assets', ['clean'], function() {
-    return gulp.src(['src/app/**/*', 'src/index.html', 'src/styles.css', '!src/app/**/*.ts'], { base : './src' })
+    return gulp.src(['src/widget/**/*', 'src/index.html', 'src/styles.css', '!src/widget/**/*.ts'], { base : './src' })
         .pipe(gulp.dest('dist'))
 });
 
