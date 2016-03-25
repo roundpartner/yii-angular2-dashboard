@@ -5,7 +5,7 @@ const tscConfig = require('./tsconfig.json');
 
 // clean the contents of the distribution directory
 gulp.task('clean', function () {
-    return del('dist/**/*');
+    return del(['dist/**/*', 'json/**/*']);
 });
 
 // TypeScript compile
@@ -32,10 +32,15 @@ gulp.task('copy:libs', ['clean'], function() {
         .pipe(gulp.dest('dist/lib'))
 });
 
+gulp.task('copy:json', ['clean'], function() {
+    return gulp.src(['src/json/**/*'], { base : './src/json' })
+        .pipe(gulp.dest('json'))
+});
+
 gulp.task('copy:assets', ['clean'], function() {
     return gulp.src(['src/news/**/*', 'src/index.html', 'src/styles.css', '!src/news/**/*.ts'], { base : './src' })
         .pipe(gulp.dest('dist'))
 });
 
-gulp.task('build', ['compile', 'copy:libs', 'copy:assets']);
+gulp.task('build', ['compile', 'copy:libs', 'copy:assets', 'copy:json']);
 gulp.task('default', ['build']);
