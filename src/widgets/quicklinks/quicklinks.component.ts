@@ -20,7 +20,7 @@ import {Link}           from './link';
 })
 
 @Injectable()
-export class WidgetQuickLinksComponent  implements OnInit {
+export class QuickLinksComponent  implements OnInit {
     constructor (private _linkService: LinkService) {}
     
     errorMessage: string;

@@ -1,16 +1,12 @@
 System.config({
     packages: {
-        news: {
+        widgets: {
             format: 'register',
-            defaultExtension: 'js'
-        },
-        widgetquicklinks: {
-            format: 'register',
-            defaultExtension: 'js'
+            defaultExtension: 'js',
         }
     }
 });
-System.import('./news/main')
+System.import('./widgets/main')
     .then(null, console.error.bind(console));
 System.import('./widgetquicklinks/main')
     .then(null, console.error.bind(console));
