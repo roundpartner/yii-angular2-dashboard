@@ -13,7 +13,8 @@ class Dashboard extends CApplicationComponent
         $cs->registerScriptFile('/dist/lib/angular2-polyfills.js', Yii::app()->clientScript->coreScriptPosition);
         $cs->registerScriptFile('/dist/lib/system.src.js', Yii::app()->clientScript->coreScriptPosition);
         $cs->registerScriptFile('/dist/lib/Rx.js', Yii::app()->clientScript->coreScriptPosition);
-        $cs->registerScriptFile('/dist/lib/angular2.min.js', Yii::app()->clientScript->coreScriptPosition);
+        // minified version of angular2 has some issues
+        $cs->registerScriptFile('/dist/lib/angular2.js', Yii::app()->clientScript->coreScriptPosition);
         $cs->registerScriptFile('/dist/lib/http.min.js', Yii::app()->clientScript->coreScriptPosition);
     }
 }
